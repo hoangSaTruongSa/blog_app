@@ -3,6 +3,7 @@ package com.vti.BlogApp.service;
 import com.vti.BlogApp.dto.PostDto;
 import com.vti.BlogApp.entity.Post;
 import com.vti.BlogApp.form.PostCreateForm;
+import com.vti.BlogApp.form.PostUpdateForm;
 import com.vti.BlogApp.mapper.PostMapper;
 import com.vti.BlogApp.repository.PostRepository;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,13 @@ public class PostServiceImpl implements PostService{
                 .map(PostMapper::map);//lambda, method reference
     }
 
+    @Override
+    public PostDto updatePost(PostUpdateForm form, Long id) {
+        var post = PostMapper.map(form);
+        post.setId(id);
+        var savedPost = postRepository.save(post);
+        return PostMapper.map(savedPost);
+    }
 
 
 }
