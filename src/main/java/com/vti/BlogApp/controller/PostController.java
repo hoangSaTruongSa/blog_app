@@ -34,4 +34,10 @@ public class PostController {
     {
         return postService.updatePost(form, id);
     }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public void deletePostById(@PathVariable("id") Long id)
+    {
+        postService.deletePostById(id);
+    }
 }
