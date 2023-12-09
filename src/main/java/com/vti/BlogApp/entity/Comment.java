@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -34,4 +36,11 @@ public class Comment {
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id",
+            referencedColumnName = "id",
+    nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Post post;
 }
