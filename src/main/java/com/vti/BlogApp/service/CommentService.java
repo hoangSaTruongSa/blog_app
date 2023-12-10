@@ -11,4 +11,5 @@ public interface CommentService {
     CommentDto createComment(CommentCreateForm form, Long postId);
     CommentDto updateComment(CommentUpdateForm form, Long commentId);
     void deleteCommentById(Long id);
+    Page<CommentDto> findCommentByPostId(Long postId, Pageable pageable);
 }

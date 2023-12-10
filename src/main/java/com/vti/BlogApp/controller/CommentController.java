@@ -44,4 +44,10 @@ public class CommentController {
     {
         commentService.deleteCommentById(id);
     }
+
+    @GetMapping("/api/v1/posts/{postId}/comments")
+    public Page<CommentDto> findCommentByPostId(@PathVariable("postId") Long postId, Pageable pageable)
+    {
+        return commentService.findCommentByPostId(postId, pageable);
+    }
 }

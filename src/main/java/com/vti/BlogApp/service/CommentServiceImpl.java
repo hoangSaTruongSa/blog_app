@@ -44,4 +44,10 @@ public class CommentServiceImpl implements CommentService {
     public void deleteCommentById(Long id) {
         commentRepository.deleteById(id);
     }
+
+    @Override
+    public Page<CommentDto> findCommentByPostId(Long postId, Pageable pageable) {
+        return commentRepository.findCommentByPostId(postId, pageable)
+                .map(CommentMapper::map);
+    }
 }
