@@ -2,6 +2,7 @@ package com.vti.BlogApp.controller;
 
 import com.vti.BlogApp.dto.CommentDto;
 import com.vti.BlogApp.form.CommentCreateForm;
+import com.vti.BlogApp.form.CommentUpdateForm;
 import com.vti.BlogApp.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,5 +25,12 @@ public class CommentController {
                                     @PathVariable("postId") Long postId)
     {
         return commentService.createComment(form, postId);
+    }
+
+    @PutMapping("/api/v1/comments/{commentId}")
+    public CommentDto updateComment(@RequestBody CommentUpdateForm form,
+                                    @PathVariable("commentId") Long commentId)
+    {
+        return commentService.updateComment(form, commentId);
     }
 }
