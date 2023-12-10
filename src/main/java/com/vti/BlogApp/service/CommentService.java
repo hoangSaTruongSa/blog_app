@@ -8,9 +8,11 @@ import org.springframework.data.domain.Pageable;
 
 public interface CommentService {
     Page<CommentDto> findAllComment(Pageable pageable);
+    CommentDto findCommentById(Long commentId);
+    Page<CommentDto> findCommentByPostId(Long postId, Pageable pageable);
     CommentDto createComment(CommentCreateForm form, Long postId);
     CommentDto updateComment(CommentUpdateForm form, Long commentId);
     void deleteCommentById(Long id);
     void deleteCommentByEmail(String email);
-    Page<CommentDto> findCommentByPostId(Long postId, Pageable pageable);
+
 }

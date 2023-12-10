@@ -22,6 +22,13 @@ public class CommentController {
         return commentService.findAllComment(pageable);
     }
 
+    @GetMapping("/api/v1/comments/{commentId}")
+    @ResponseStatus(HttpStatus.OK)
+    public CommentDto findCommentById(@PathVariable("commentId") Long commentId)
+    {
+        return commentService.findCommentById(commentId);
+    }
+
     @GetMapping("/api/v1/posts/{postId}/comments")
     public Page<CommentDto> findCommentByPostId(@PathVariable("postId") Long postId, Pageable pageable)
     {
