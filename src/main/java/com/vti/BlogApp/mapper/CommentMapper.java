@@ -25,6 +25,7 @@ public class CommentMapper {
         commentDto.setBody(comment.getBody());
         commentDto.setCreatedAt(comment.getCreatedAt());
         commentDto.setUpdatedAt(comment.getUpdatedAt());
+        commentDto.setTitlePost(comment.getPost().getTitle());
         return commentDto;
     }
 }

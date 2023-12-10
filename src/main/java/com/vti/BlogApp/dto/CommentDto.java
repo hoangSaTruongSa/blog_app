@@ -1,5 +1,6 @@
 package com.vti.BlogApp.dto;
 
+import com.vti.BlogApp.entity.Post;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,4 +16,5 @@ public class CommentDto {
     private String body;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String titlePost;
 }
