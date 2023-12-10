@@ -10,4 +10,5 @@ public interface CommentService {
     Page<CommentDto> findAllComment(Pageable pageable);
     CommentDto createComment(CommentCreateForm form, Long postId);
     CommentDto updateComment(CommentUpdateForm form, Long commentId);
+    void deleteCommentById(Long id);
 }

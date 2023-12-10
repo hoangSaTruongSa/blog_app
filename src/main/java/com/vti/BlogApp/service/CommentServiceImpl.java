@@ -39,4 +39,9 @@ public class CommentServiceImpl implements CommentService {
         var commentSaved = commentRepository.save(comment);
         return CommentMapper.map(commentSaved);
     }
+
+    @Override
+    public void deleteCommentById(Long id) {
+        commentRepository.deleteById(id);
+    }
 }
