@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -33,6 +34,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public CommentDto updateComment(CommentUpdateForm form, Long commentId) {
         var comment = commentRepository.findById(commentId).get();
         CommentMapper.map(form, comment);
@@ -41,8 +43,15 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional
     public void deleteCommentById(Long id) {
         commentRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCommentByEmail(String email) {
+        commentRepository.deleteCommentByEmail(email);
     }
 
     @Override

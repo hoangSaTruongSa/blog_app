@@ -22,6 +22,12 @@ public class CommentController {
         return commentService.findAllComment(pageable);
     }
 
+    @GetMapping("/api/v1/posts/{postId}/comments")
+    public Page<CommentDto> findCommentByPostId(@PathVariable("postId") Long postId, Pageable pageable)
+    {
+        return commentService.findCommentByPostId(postId, pageable);
+    }
+
     @PostMapping("/api/v1/post/{postId}/comments")
     @ResponseStatus(HttpStatus.CREATED)
     public CommentDto createComment(@RequestBody CommentCreateForm form,
@@ -45,9 +51,11 @@ public class CommentController {
         commentService.deleteCommentById(id);
     }
 
-    @GetMapping("/api/v1/posts/{postId}/comments")
-    public Page<CommentDto> findCommentByPostId(@PathVariable("postId") Long postId, Pageable pageable)
+    @DeleteMapping("/api/v1/comments/email/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCommentByEmail(@PathVariable("email") String email)
     {
-        return commentService.findCommentByPostId(postId, pageable);
+        commentService.deleteCommentByEmail(email);
     }
+
 }
