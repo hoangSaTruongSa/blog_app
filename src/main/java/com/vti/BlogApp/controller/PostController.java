@@ -5,6 +5,7 @@ import com.vti.BlogApp.form.PostCreateForm;
 import com.vti.BlogApp.form.PostFilterForm;
 import com.vti.BlogApp.form.PostUpdateForm;
 import com.vti.BlogApp.service.PostService;
+import com.vti.BlogApp.validation.PostIdExists;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,7 +28,7 @@ public class PostController {
     }
 
     @GetMapping("/api/v1/posts/{id}")
-    public PostDto findPostById(@PathVariable("id") Long id)
+    public PostDto findPostById(@PathVariable("id") @PostIdExists Long id)
     {
         return postService.findPostById(id);
     }
@@ -40,13 +41,13 @@ public class PostController {
 
     @PutMapping("/api/v1/posts/{id}")
     public PostDto updatePost( @RequestBody @Valid PostUpdateForm form,
-                               @PathVariable("id") Long id)
+                               @PathVariable("id") @PostIdExists Long id)
     {
         return postService.updatePost(form, id);
     }
 
     @DeleteMapping("/api/v1/posts/{id}")
-    public void deletePostById(@PathVariable("id") Long id)
+    public void deletePostById(@PathVariable("id") @PostIdExists Long id)
     {
         postService.deletePostById(id);
     }

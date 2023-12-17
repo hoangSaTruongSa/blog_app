@@ -1,11 +1,15 @@
 package com.vti.BlogApp.exception;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -28,5 +32,19 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         }
         var response = new ErrorResponse(message, errors);
         return new ResponseEntity<>(response, headers, status);
+    }
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException exception)
+    {
+        var message = "Sorry! Invalid Id";
+        var errors = new HashMap<String, String>();
+        for (ConstraintViolation<?> constraintViolation : exception.getConstraintViolations()) {
+            var key = constraintViolation.getPropertyPath().toString();
+            var value = constraintViolation.getMessage();
+            errors.put(key, value);
+        }
+        var response = new ErrorResponse(message, errors);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }
