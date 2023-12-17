@@ -5,14 +5,17 @@ import com.vti.BlogApp.form.CommentCreateForm;
 import com.vti.BlogApp.form.CommentFilterForm;
 import com.vti.BlogApp.form.CommentUpdateForm;
 import com.vti.BlogApp.service.CommentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@Validated
 public class CommentController {
     private final CommentService commentService;
 
@@ -38,7 +41,7 @@ public class CommentController {
 
     @PostMapping("/api/v1/post/{postId}/comments")
     @ResponseStatus(HttpStatus.CREATED)
-    public CommentDto createComment(@RequestBody CommentCreateForm form,
+    public CommentDto createComment(@RequestBody @Valid CommentCreateForm form,
                                     @PathVariable("postId") Long postId)
     {
         return commentService.createComment(form, postId);
@@ -46,7 +49,7 @@ public class CommentController {
 
     @PutMapping("/api/v1/comments/{commentId}")
     @ResponseStatus(HttpStatus.OK)
-    public CommentDto updateComment(@RequestBody CommentUpdateForm form,
+    public CommentDto updateComment(@RequestBody @Valid CommentUpdateForm form,
                                     @PathVariable("commentId") Long commentId)
     {
         return commentService.updateComment(form, commentId);

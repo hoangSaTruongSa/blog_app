@@ -39,7 +39,7 @@ public class PostController {
     }
 
     @PutMapping("/api/v1/posts/{id}")
-    public PostDto updatePost( @RequestBody PostUpdateForm form,
+    public PostDto updatePost( @RequestBody @Valid PostUpdateForm form,
                                @PathVariable("id") Long id)
     {
         return postService.updatePost(form, id);
