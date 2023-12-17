@@ -1,7 +1,6 @@
 package com.vti.BlogApp.service;
 
 import com.vti.BlogApp.dto.PostDto;
-import com.vti.BlogApp.entity.Post;
 import com.vti.BlogApp.form.PostCreateForm;
 import com.vti.BlogApp.form.PostFilterForm;
 import com.vti.BlogApp.form.PostUpdateForm;
@@ -12,8 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 
 @Service
@@ -57,6 +54,11 @@ public class PostServiceImpl implements PostService{
     @Override
     public void deletePostById(Long id) {
         postRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsByTitle(String title) {
+        return postRepository.existsByTitle(title);
     }
 
 

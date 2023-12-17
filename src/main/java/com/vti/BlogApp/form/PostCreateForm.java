@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 public class PostCreateForm
 //Class tạo các parameter người dùng nhập vào để tạo Post
 {
-    @NotBlank
+    @NotBlank(message = "{post.title.NotBlank.message}")
     @Length(max = 50)
     private String title;
 

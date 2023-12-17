@@ -13,4 +13,5 @@ public interface PostService {
     PostDto findPostById(Long id);
     PostDto updatePost(PostUpdateForm form, Long id);
     void deletePostById(Long id);
+    boolean existsByTitle(String title);
 }
