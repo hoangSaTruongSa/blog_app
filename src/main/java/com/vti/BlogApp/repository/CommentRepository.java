@@ -21,5 +21,4 @@ public interface CommentRepository extends JpaRepository<Comment, Long>,
     @Query("DELETE Comment WHERE email =:email")
     @Modifying
     void deleteCommentByEmail(@Param("email") String email);
-
 }

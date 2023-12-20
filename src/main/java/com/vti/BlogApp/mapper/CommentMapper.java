@@ -34,7 +34,7 @@ public class CommentMapper {
         commentDto.setCreatedAt(comment.getCreatedAt());
         commentDto.setUpdatedAt(comment.getUpdatedAt());
         commentDto.setTitlePost(comment.getPost().getTitle());
-        return commentDto;
+        return commentDto.withSelfRel();
     }
 
 }

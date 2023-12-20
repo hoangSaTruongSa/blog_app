@@ -37,6 +37,6 @@ public class PostMapper {
         postDto.setCreatedAt(post.getCreatedAt());
         postDto.setUpdatedAt(post.getUpdatedAt());
 
-        return postDto;
+        return postDto.withSelfRel();
     }
 }

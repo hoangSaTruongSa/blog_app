@@ -12,7 +12,5 @@ public interface PostRepository extends JpaRepository<Post,Long>,
         JpaSpecificationExecutor<Post>
 //Kế thừa Lớp của JPA đã có sẵn CRUD chỉ việc lấy để dùng <Entity,Kiểu dữ liệu khóa chính>
 {
-    @Query("SELECT p FROM Post p WHERE p.title = :title")
-    @Modifying
-    boolean existsByTitle(@Param("title") String title);
+    boolean existsByTitle(String title);
 }

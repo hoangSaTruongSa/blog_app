@@ -28,7 +28,7 @@ public class PostController {
     }
 
     @GetMapping("/api/v1/posts/{id}")
-    public PostDto findPostById(@PathVariable("id") @PostIdExists Long id)
+    public PostDto findPostById(@PathVariable("id") Long id)
     {
         return postService.findPostById(id);
     }
@@ -52,9 +52,4 @@ public class PostController {
         postService.deletePostById(id);
     }
 
-    @GetMapping("/api/v1/posts/{title}")
-    boolean existsByTitle(@PathVariable("title") String title)
-    {
-       return postService.existsByTitle(title);
-    }
 }

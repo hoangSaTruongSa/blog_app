@@ -1,5 +1,6 @@
 package com.vti.BlogApp.form;
 
+import com.vti.BlogApp.validation.PostTitleNotExists;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ public class PostCreateForm
 {
     @NotBlank(message = "{post.title.NotBlank.message}")
     @Length(max = 50)
+    @PostTitleNotExists
     private String title;
 
     @NotBlank
