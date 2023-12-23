@@ -14,3 +14,4 @@ VALUES              (1,   'Nguyễn Văn Bộ',      'bonv@gmail.com',      'Đa
                     (4,   'Nguyễn Văn Mạnh',    'manhnv@gmail.com',     'Đang học Spring',   CURRENT_TIMESTAMP,   CURRENT_TIMESTAMP,  3      ),
                     (5,   'Nguyễn Văn Dũng',    'dungnv@gmail.com',     'Đang học Spring',   CURRENT_TIMESTAMP,   CURRENT_TIMESTAMP,  3      ),
                     (6,   'Nguyễn Văn Trường',  'truongnv@gmail.com',   'Đang học Spring',   CURRENT_TIMESTAMP,   CURRENT_TIMESTAMP,  2      );
+
