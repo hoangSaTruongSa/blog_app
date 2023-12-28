@@ -15,3 +15,6 @@ VALUES              (1,   'Nguyễn Văn Bộ',      'bonv@gmail.com',      'Đa
                     (5,   'Nguyễn Văn Dũng',    'dungnv@gmail.com',     'Đang học Spring',   CURRENT_TIMESTAMP,   CURRENT_TIMESTAMP,  3      ),
                     (6,   'Nguyễn Văn Trường',  'truongnv@gmail.com',   'Đang học Spring',   CURRENT_TIMESTAMP,   CURRENT_TIMESTAMP,  2      );
 
+INSERT INTO role (type, created_at, updated_at)
+VALUES           ('ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                 ('USER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

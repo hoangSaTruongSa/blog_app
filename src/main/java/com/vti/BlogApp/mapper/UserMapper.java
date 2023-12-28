@@ -4,6 +4,8 @@ import com.vti.BlogApp.dto.UserDto;
 import com.vti.BlogApp.entity.User;
 import com.vti.BlogApp.form.UserCreateForm;
 
+import java.util.Set;
+
 public class UserMapper {
     public static User map(UserCreateForm form)
     {
@@ -26,7 +28,6 @@ public class UserMapper {
         userDto.setPassword(user.getPassword());
         userDto.setCreatedAt(user.getCreatedAt());
         userDto.setUpdatedAt(user.getUpdatedAt());
-
         return userDto;
     }
 }

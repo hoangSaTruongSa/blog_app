@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,6 +20,7 @@ public class Role {
     private Long id;
 
     @Column(name = "type", nullable = false, unique = true)
+    @Enumerated(value = EnumType.STRING)
     private Type type;
 
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -28,6 +30,9 @@ public class Role {
     @Column(name = "updated_at", nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     public enum Type{
         ADMIN, USER
